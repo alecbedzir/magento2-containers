@@ -46,7 +46,5 @@
 !/src/pub/static/.htaccess
 /src/var/*
 !/src/var/.htaccess
-/src/vendor/*
-!/src/vendor/.htaccess
 /src/generated/*
 !/src/generated/.htaccess
