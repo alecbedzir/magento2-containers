@@ -91,6 +91,7 @@ RUN apk add --no-cache --virtual .build-deps ${PHPIZE_DEPS} \
     libxslt \
     libzip \
     yaml \
+    nano \
   # Change uid to 1000 and gid to 1000
   && usermod -u 1000 www-data \
   && groupmod -g 1000 www-data \
@@ -182,6 +183,6 @@ ONBUILD RUN if [ "$BUILD_PHP_XDEBUG_ENABLE" = "1" ] ; then \
 
 ONBUILD USER www-data
 
-ONBUILD RUN mkdir -p pub
+ONBUILD COPY --chown=www-data:www-data src/ .
 
 FROM ${BUILD_ENVIRONMENT_IMAGE} as magento2-php-fpm
