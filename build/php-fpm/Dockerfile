@@ -183,6 +183,9 @@ ONBUILD RUN if [ "$BUILD_PHP_XDEBUG_ENABLE" = "1" ] ; then \
 
 ONBUILD USER www-data
 
-ONBUILD COPY --chown=www-data:www-data src/ .
+# To copy an entire project into container uncomment the line below
+# and comment "ONBUILD RUN mkdir -p pub" instruction
+# ONBUILD COPY --chown=www-data:www-data src/ .
+ONBUILD RUN mkdir -p pub
 
 FROM ${BUILD_ENVIRONMENT_IMAGE} as magento2-php-fpm
