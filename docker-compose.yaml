@@ -12,9 +12,9 @@ services:
       - frontend
       - backend
     depends_on:
-      - nginx
+      - webserver
 
-  # nginx:
+  # webserver:
   #   build:
   #     context: .
   #     dockerfile: ./build/nginx/Dockerfile
@@ -33,7 +33,7 @@ services:
   #   depends_on:
   #     - php-fpm
 
-  httpd:
+  webserver:
     build:
       context: .
       dockerfile: ./build/httpd/Dockerfile
