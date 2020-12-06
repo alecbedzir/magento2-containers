@@ -125,8 +125,12 @@ RUN apk add --no-cache --virtual .build-deps ${PHPIZE_DEPS} \
   && chmod +x "$SUPERCRONIC" \
   && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
   && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic \
-  # Install Composer
-  && curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
+  #
+  ### Install Composer ver 2 which doesn't need hirak/prestissimo anymore
+  # && curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
+  #
+  ### Install Composer ver 1.8.4 with hirak/prestissimo
+  && curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=1.8.4 \
   && composer global require hirak/prestissimo --no-plugins --no-scripts \
   # Remove build dependencies to minify the image size
   && rm -rf /tmp/* \
